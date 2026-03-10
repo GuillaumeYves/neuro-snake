@@ -44,7 +44,7 @@ function reset_apple() {
 function loop_game() {
   move_snake(last_direction);
   check_eat_apple();
-  if (collide_with_wall()) {
+  if (collide_with_wall() || collide_with_self()) {
     game_over();
   }
 }
@@ -97,6 +97,19 @@ function collide_with_wall() {
   );
 }
 
+function collide_with_self() {
+  let head_left = parseInt(snake[0].style.left);
+  let head_top = parseInt(snake[0].style.top);
+  for (let i = 1; i < snake.length; i++) {
+    let part_left = parseInt(snake[i].style.left);
+    let part_top = parseInt(snake[i].style.top);
+    if (head_left === part_left && head_top === part_top) {
+      return true;
+    }
+  }
+  return false;
+}
+
 function game_over() {
   alert("Game Over!");
   reset_game();
@@ -136,7 +149,7 @@ function grow_snake() {
   const last_part = snake[snake.length - 1];
   const new_part = document.createElement("div");
   new_part.classList.add("snake-part");
-  new_part.style.left = last_part.style.left;
+  new_part.style.left = parseInt(last_part.style.left) - snake_size + "px";
   new_part.style.top = last_part.style.top;
   game_container.appendChild(new_part);
   snake.push(new_part);
