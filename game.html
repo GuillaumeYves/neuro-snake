@@ -1,41 +1,21 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
 
-</head>
-
-<body>
-    <div id="game-container" style="width: 400px; height: 400px;">
-        <div id="snake"></div>
+  <body>
+    <div id="game-container" style="width: 400px; height: 400px">
+      <div id="snake"></div>
     </div>
     <button onclick="saveDirection('left')"><</button>
     <button onclick="saveDirection('right')">></button>
     <button onclick="saveDirection('up')">^</button>
     <button onclick="saveDirection('down')">v</button>
-</body>
+  </body>
 
-<script src="js/main.js"></script>
+  <script src="js/main.js"></script>
 </html>
-
-
-
-<div class="login-container" style="visibility: hidden;">
-        <h2>Se connecter</h2>
-        <form method="POST" action="login.php">
-            <div class="form-group">
-                <label for="username">Nom d'utilisateur :</label>
-                <input type="text" id="username" name="username" required="">
-            </div>
-            <div class="form-group">
-                <label for="password">Mot de passe :</label>
-                <input type="password" id="password" name="password" required="">
-            </div>
-            <button type="submit">Connexion</button>
-        </form>
-        <a href="index.html">Retour au formulaire</a>
-    </div>
