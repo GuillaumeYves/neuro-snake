@@ -1,21 +1,44 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="css/main.css" />
+    <title>Jeu Snake</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="css/styles.css" />
   </head>
-
   <body>
-    <div id="game-container" style="width: 400px; height: 400px">
-      <div id="snake"></div>
-    </div>
-    <button onclick="saveDirection('left')"><</button>
-    <button onclick="saveDirection('right')">></button>
-    <button onclick="saveDirection('up')">^</button>
-    <button onclick="saveDirection('down')">v</button>
-  </body>
+    <div id="wrapper">
+      <div id="game-wrapper">
+        <div id="scoreboard">
+          <h1 class="title">
+            SNAKE <span style="font-size: xx-small">par Guillaume YVES</span>
+          </h1>
+          <div id="multiplier-badge"></div>
+          <div class="score-block">
+            <span class="score-label">SCORE</span>
+            <span id="score-display">0</span>
+          </div>
+        </div>
 
-  <script src="js/main.js"></script>
+        <div id="game-container"></div>
+
+        <div id="overlay" class="visible">
+          <p class="overlay-title"></p>
+          <p class="overlay-sub"></p>
+        </div>
+      </div>
+
+      <p class="hint">
+        Touches 'Flèches' pour se déplacer - Touche 'Espace' pour mettre en
+        pause
+      </p>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
 </html>

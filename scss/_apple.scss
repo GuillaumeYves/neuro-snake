@@ -1,0 +1,64 @@
+// Style des pommes et pommes d'or
+
+.apple {
+  width: var(--cell);
+  height: var(--cell);
+  position: absolute;
+  z-index: 4;
+  animation: apple-pulse 1.4s ease-in-out infinite;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 3px;
+    height: 8px;
+    background: #22cc44;
+    border-radius: 2px 2px 0 0;
+    top: 3px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-12deg);
+    z-index: 5;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 7px;
+    background: radial-gradient(circle at 35% 35%, #ff6080, var(--apple));
+    border-radius: 50%;
+    box-shadow: var(--glow-a);
+  }
+}
+
+.golden-apple {
+  animation: gold-pulse 0.9s ease-in-out infinite;
+
+  &::before {
+    background: #886600;
+  }
+
+  &::after {
+    background: radial-gradient(circle at 35% 35%, #ffe566, var(--gold));
+    box-shadow: var(--glow-gold);
+  }
+}
+
+@keyframes apple-pulse {
+  0%,
+  100% {
+    transform: scale(0.74);
+  }
+  50% {
+    transform: scale(0.8);
+  }
+}
+
+@keyframes gold-pulse {
+  0%,
+  100% {
+    transform: scale(0.74) rotate(0deg);
+  }
+  50% {
+    transform: scale(0.82) rotate(5deg);
+  }
+}

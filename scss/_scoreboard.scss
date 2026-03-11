@@ -1,0 +1,50 @@
+// Styles de l'affichage du score
+
+#scoreboard {
+  width: 800px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  margin-bottom: 6px;
+  .title {
+    font-size: var(--fs-title);
+    color: var(--green);
+    text-shadow: var(--glow-g);
+    letter-spacing: 4px;
+  }
+  .score-block {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .score-label {
+    font-size: var(--fs-label);
+    color: var(--dim);
+    letter-spacing: 2px;
+  }
+}
+#score-display {
+  font-size: var(--fs-score);
+  color: var(--green);
+  text-shadow: var(--glow-g);
+  transition: color 0.1s;
+  min-width: 48px;
+  text-align: right;
+}
+.score-flash {
+  animation: flash 0.3s ease;
+}
+@keyframes flash {
+  0% {
+    color: var(--gold);
+    text-shadow: var(--glow-gold);
+    transform: scale(1.3);
+  }
+  100% {
+    color: var(--green);
+    transform: scale(1);
+  }
+}

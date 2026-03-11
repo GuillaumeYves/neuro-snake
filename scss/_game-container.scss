@@ -1,0 +1,25 @@
+// Styles du game container
+
+#game-container {
+  width: 800px;
+  height: 800px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    inset 0 0 60px rgba(0, 255, 136, 0.03),
+    inset 0 0 0 50px rgba(0, 0, 0, 0.15);
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+    background-size: var(--cell) var(--cell);
+    pointer-events: none;
+    z-index: 0;
+  }
+}

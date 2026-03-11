@@ -1,0 +1,88 @@
+// Styles de l'overlay (game over/pause)
+
+#overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 8, 16, 0.88);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  backdrop-filter: blur(2px);
+  &.visible {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+.overlay-title {
+  font-size: var(--fs-overlay-h1);
+  color: var(--green);
+  text-shadow: var(--glow-g);
+  letter-spacing: 6px;
+  &.gameover-text {
+    color: var(--apple);
+    text-shadow: var(--glow-a);
+    animation: flicker 0.5s ease 1;
+  }
+  &.paused-text {
+    color: var(--gold);
+    text-shadow: var(--glow-gold);
+  }
+}
+.overlay-sub {
+  font-size: var(--fs-overlay-sub);
+  color: var(--dim);
+  line-height: 2.2;
+  text-align: center;
+}
+.key {
+  color: var(--head);
+  border: 1px solid var(--head);
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-size: var(--fs-key);
+}
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: var(--fs-legend);
+  color: var(--dim);
+  margin-top: 4px;
+}
+.legend-dot {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+.apple-dot {
+  background: var(--apple);
+  box-shadow: var(--glow-a);
+}
+.golden-dot {
+  background: var(--gold);
+  box-shadow: var(--glow-gold);
+}
+@keyframes flicker {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}

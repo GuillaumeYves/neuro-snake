@@ -1,0 +1,31 @@
+// Variables globales de l'appli
+
+:root {
+  --bg: #050810;
+  --panel: #0b1020;
+  --border: #1a2540;
+  --green: #00ff88;
+  --green-dim: #00cc66;
+  --head: #00cc66;
+  --apple: #ff3060;
+  --gold: #ffd700;
+  --text: #c8d8ff;
+  --dim: #3a4a70;
+
+  --glow-g: 0 0 8px #00ff8888, 0 0 20px #00ff8844;
+  --glow-h: 0 0 8px #00cc66bb, 0 0 24px #00cc6666;
+  --glow-a: 0 0 8px #ff306099, 0 0 20px #ff306044;
+  --glow-gold: 0 0 10px #ffd70099, 0 0 28px #ffd70055;
+
+  --cell: 50px;
+
+  --fs-title: clamp(16px, 2.2vw, 26px);
+  --fs-score: clamp(18px, 2.8vw, 30px);
+  --fs-label: clamp(8px, 1vw, 12px);
+  --fs-overlay-h1: clamp(22px, 3.5vw, 36px);
+  --fs-overlay-sub: clamp(9px, 1.1vw, 13px);
+  --fs-key: clamp(7px, 0.9vw, 11px);
+  --fs-legend: clamp(8px, 1vw, 12px);
+  --fs-popup: clamp(10px, 1.4vw, 16px);
+  --fs-hint: clamp(7px, 0.85vw, 10px);
+}

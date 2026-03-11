@@ -1,0 +1,28 @@
+// Styles éléments de l'UI
+
+.score-popup {
+  position: absolute;
+  font-family: "Press Start 2P", monospace;
+  font-size: var(--fs-popup);
+  pointer-events: none;
+  z-index: 200;
+  animation: popup 0.8s ease-out forwards;
+}
+@keyframes popup {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-40px) scale(1.4);
+  }
+}
+.hint {
+  font-size: var(--fs-hint);
+  color: var(--dim);
+  letter-spacing: 1px;
+  text-align: center;
+  margin-top: 4px;
+  padding: 0 8px;
+}

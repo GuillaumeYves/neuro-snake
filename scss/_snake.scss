@@ -1,0 +1,106 @@
+// Styles de l'apparence du serpent
+
+.snake-part {
+  width: var(--cell);
+  height: var(--cell);
+  background: var(--green-dim);
+  position: absolute;
+  z-index: 2;
+  border-radius: 6px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    background: var(--green);
+    border-radius: 3px;
+    opacity: 0.25;
+  }
+}
+
+.snake-head {
+  background: var(--head);
+  box-shadow: var(--glow-h);
+  z-index: 3;
+  border-radius: 8px;
+
+  &::after {
+    background: #fff;
+    opacity: 0.2;
+  }
+}
+
+.snake-eye {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #fafafa;
+  border-radius: 50%;
+  border: 1px solid black;
+  z-index: 4;
+  transition:
+    top 0.02s,
+    right 0.02s,
+    bottom 0.02s,
+    left 0.02s;
+}
+
+.snake-head[data-dir="right"] {
+  .eye-1 {
+    top: 27%;
+    right: 8px;
+    left: auto;
+    bottom: auto;
+  }
+  .eye-2 {
+    bottom: 27%;
+    right: 8px;
+    top: auto;
+    left: auto;
+  }
+}
+
+.snake-head[data-dir="left"] {
+  .eye-1 {
+    top: 27%;
+    left: 8px;
+    right: auto;
+    bottom: auto;
+  }
+  .eye-2 {
+    bottom: 27%;
+    left: 8px;
+    top: auto;
+    right: auto;
+  }
+}
+
+.snake-head[data-dir="up"] {
+  .eye-1 {
+    top: 8px;
+    left: 27%;
+    right: auto;
+    bottom: auto;
+  }
+  .eye-2 {
+    top: 8px;
+    right: 27%;
+    left: auto;
+    bottom: auto;
+  }
+}
+
+.snake-head[data-dir="down"] {
+  .eye-1 {
+    bottom: 8px;
+    left: 27%;
+    top: auto;
+    right: auto;
+  }
+  .eye-2 {
+    bottom: 8px;
+    right: 27%;
+    top: auto;
+    left: auto;
+  }
+}
