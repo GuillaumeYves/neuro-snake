@@ -13,30 +13,146 @@
   </head>
   <body>
     <div id="wrapper">
-      <div id="game-wrapper">
-        <div id="scoreboard">
-          <h1 class="title">
-            SNAKE <span style="font-size: xx-small">par Guillaume YVES</span>
-          </h1>
-          <div id="multiplier-badge"></div>
-          <div class="score-block">
-            <span class="score-label">SCORE</span>
-            <span id="score-display">0</span>
+      <!-- Toggle Manuel / Auto IA -->
+      <div id="mode-bar">
+        <span class="mode-label active" id="label-manual">MANUEL</span>
+        <label class="mode-switch" title="Changer de mode">
+          <input type="checkbox" id="mode-toggle" />
+          <span class="switch-track"></span>
+        </label>
+        <span class="mode-label" id="label-brain">AUTO IA</span>
+      </div>
+
+      <!-- Mode Manuel -->
+      <div id="manual-mode" class="mode-panel active">
+        <div id="game-wrapper">
+          <div id="scoreboard">
+            <h1 class="title">
+              SNAKE <span style="font-size: xx-small">par Guillaume YVES</span>
+            </h1>
+            <div id="multiplier-badge"></div>
+            <div class="score-block">
+              <span class="score-label">SCORE</span>
+              <span id="score-display">0</span>
+            </div>
+          </div>
+          <div id="game-container"></div>
+          <div id="overlay" class="visible">
+            <p class="overlay-title"></p>
+            <p class="overlay-sub"></p>
+          </div>
+        </div>
+        <p class="hint">
+          Touches 'Flèches' pour se déplacer · 'Espace' pour mettre en pause
+        </p>
+      </div>
+
+      <!-- Mode Auto IA -->
+      <div id="ai-game-panel" class="mode-panel">
+        <div id="brain-agents">
+          <div class="agent-slot" id="agent-slot-0">
+            <div class="agent-label">
+              AGENT 1 · <span id="agent-score-0">0</span>
+            </div>
+            <div class="agent-container" id="agent-container-0"></div>
+          </div>
+          <div class="agent-slot" id="agent-slot-1">
+            <div class="agent-label">
+              AGENT 2 · <span id="agent-score-1">0</span>
+            </div>
+            <div class="agent-container" id="agent-container-1"></div>
+          </div>
+          <div class="agent-slot" id="agent-slot-2">
+            <div class="agent-label">
+              AGENT 3 · <span id="agent-score-2">0</span>
+            </div>
+            <div class="agent-container" id="agent-container-2"></div>
+          </div>
+          <div class="agent-slot" id="agent-slot-3">
+            <div class="agent-label">
+              AGENT 4 · <span id="agent-score-3">0</span>
+            </div>
+            <div class="agent-container" id="agent-container-3"></div>
           </div>
         </div>
 
-        <div id="game-container"></div>
-
-        <div id="overlay" class="visible">
-          <p class="overlay-title"></p>
-          <p class="overlay-sub"></p>
+        <div id="brain-bar">
+          <div id="brain-stats"></div>
+          <button id="brain-start-btn">&#9654; ENTRAÎNER</button>
         </div>
       </div>
+    </div>
 
-      <p class="hint">
-        Touches 'Flèches' pour se déplacer - Touche 'Espace' pour mettre en
-        pause
-      </p>
+    <!-- Disclaimer pour le Mode Auto IA -->
+    <div id="ai-disclaimer" class="modal-overlay hidden">
+      <div class="modal-box">
+        <div class="modal-icon">⚠</div>
+        <h2 class="modal-title">MODE AUTO IA</h2>
+        <p class="modal-desc">
+          Ce mode simule des centaines à plusieurs milliers d'agents en
+          parallèle, chacun jouant sa propre partie en temps réel.
+          <br /><br />
+          Le navigateur sera <strong>fortement sollicité</strong> pendant
+          l'entraînement. Pour plus d'intéractivité, 4 agents seront visibles,
+          le reste est invisible et simulé en arrière-plan à grande vitesse.
+        </p>
+
+        <div class="pop-section">
+          <p class="pop-title">CHOISIR LA TAILLE DE LA POPULATION</p>
+          <div class="pop-grid">
+            <button class="pop-btn" data-pop="100">
+              <span class="pop-num">100</span>
+              <span class="pop-tag tag-easy">Léger</span>
+              <span class="pop-desc"
+                >Idéal pour tester.<br />Convergence rapide,<br />résultats
+                limités.</span
+              >
+            </button>
+
+            <button class="pop-btn" data-pop="500">
+              <span class="pop-num">500</span>
+              <span class="pop-tag tag-medium">Modéré</span>
+              <span class="pop-desc"
+                >Bon compromis.<br />Navigateur légèrement<br />sollicité.</span
+              >
+            </button>
+
+            <button class="pop-btn active" data-pop="1000">
+              <span class="pop-num">1000</span>
+              <span class="pop-tag tag-hard">Intense</span>
+              <span class="pop-desc"
+                >Recommandé.<br />Bonne diversité<br />génétique.</span
+              >
+            </button>
+
+            <button class="pop-btn" data-pop="2000">
+              <span class="pop-num">2000</span>
+              <span class="pop-tag tag-vhard">Très lourd</span>
+              <span class="pop-desc"
+                >Apprentissage plus<br />robuste. CPU fortement<br />sollicité.</span
+              >
+            </button>
+
+            <button class="pop-btn" data-pop="3000">
+              <span class="pop-num">3000</span>
+              <span class="pop-tag tag-extreme">Extrême</span>
+              <span class="pop-desc"
+                >Déconseillé sur<br />machine lente.<br />Résultats
+                optimaux.</span
+              >
+            </button>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button id="ai-disclaimer-ok" class="modal-btn-ok">
+            &#9654; LANCER L'ENTRAÎNEMENT
+          </button>
+          <button id="ai-disclaimer-cancel" class="modal-btn-cancel">
+            ANNULER
+          </button>
+        </div>
+      </div>
     </div>
 
     <script type="module" src="js/main.js"></script>

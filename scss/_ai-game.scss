@@ -1,0 +1,427 @@
+// Styles du mode auto AI
+
+#mode-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 10px 0 4px;
+
+  .mode-label {
+    font-size: var(--fs-hint);
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+    transition: color 0.25s;
+    &.active {
+      color: var(--green);
+    }
+  }
+}
+
+.mode-switch {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 24px;
+  cursor: pointer;
+  input {
+    display: none;
+  }
+
+  .switch-track {
+    position: absolute;
+    inset: 0;
+    background: #0a1a10;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: border-color 0.25s;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background: var(--green);
+      border-radius: 50%;
+      top: 3px;
+      left: 3px;
+      transition:
+        transform 0.25s,
+        background 0.25s;
+      box-shadow: 0 0 6px var(--green);
+    }
+  }
+
+  input:checked + .switch-track {
+    border-color: #cc44ff;
+    &::after {
+      transform: translateX(22px);
+      background: #cc44ff;
+      box-shadow: 0 0 6px #cc44ff;
+    }
+  }
+}
+
+.mode-panel {
+  display: none;
+  &.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+}
+
+#brain-agents {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.agent-slot {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+  background: var(--panel);
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.04);
+  transition:
+    opacity 0.4s,
+    border-color 0.4s;
+
+  &.is-dead {
+    opacity: 0.3;
+    border-color: #1e0a0a;
+    box-shadow: none;
+  }
+}
+
+.agent-label {
+  font-size: 8px;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  text-align: center;
+  span {
+    color: var(--green);
+  }
+}
+
+.agent-container {
+  --cell: 24px;
+
+  position: relative;
+  overflow: hidden;
+  background: var(--panel);
+  border: 1px solid var(--border);
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+    background-size: var(--cell) var(--cell);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .snake-eye {
+    display: none;
+  }
+
+  .apple::before {
+    display: none;
+  }
+
+  .bonus-pickup {
+    font-size: 7px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    animation: none !important;
+  }
+}
+
+#brain-bar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 10px 16px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#brain-stats {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  .bs-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .bs-label {
+    font-size: 6.5px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+  }
+
+  .bs-val {
+    font-size: 12px;
+    color: var(--green);
+    &.accent {
+      color: #ffd700;
+    }
+  }
+
+  .bs-agents-inline {
+    display: flex;
+    gap: 6px;
+  }
+
+  .bs-agent {
+    font-size: 7px;
+    padding: 2px 5px;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    transition: all 0.3s;
+    &.alive {
+      border-color: var(--green);
+      color: var(--green);
+    }
+    &.dead {
+      border-color: #2a1010;
+      color: #553333;
+    }
+  }
+}
+
+#brain-start-btn {
+  padding: 10px 16px;
+  background: transparent;
+  border: 1px solid var(--green);
+  color: var(--green);
+  font-family: "Press Start 2P", monospace;
+  font-size: 8px;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition:
+    background 0.2s,
+    box-shadow 0.2s;
+
+  &:hover {
+    background: rgba(0, 255, 136, 0.07);
+    box-shadow: 0 0 12px rgba(0, 255, 136, 0.18);
+  }
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+
+  &.hidden {
+    display: none;
+  }
+}
+
+.modal-box {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  box-shadow:
+    0 0 40px rgba(0, 255, 136, 0.08),
+    0 0 80px rgba(0, 0, 0, 0.6);
+  padding: 40px 36px;
+  max-width: 720px;
+  width: calc(100vw - 48px);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.modal-icon {
+  font-size: 26px;
+  color: #ffcc00;
+  text-shadow: 0 0 10px #ffcc0088;
+  text-align: center;
+}
+
+.modal-title {
+  font-family: "Press Start 2P", monospace;
+  font-size: 15px;
+  color: var(--green);
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 12px rgba(0, 255, 136, 0.4);
+}
+
+.modal-desc {
+  font-size: 11px;
+  line-height: 2;
+  color: var(--text-dim);
+  text-align: center;
+
+  strong {
+    color: #ffcc00;
+  }
+  em {
+    color: var(--green);
+    font-style: normal;
+  }
+}
+
+.pop-section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.pop-title {
+  font-size: 8px;
+  color: var(--text-dim);
+  letter-spacing: 0.15em;
+  text-align: center;
+}
+
+.pop-grid {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.pop-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 10px;
+  width: 104px;
+  background: transparent;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  font-family: "Press Start 2P", monospace;
+  transition:
+    border-color 0.2s,
+    background 0.2s,
+    box-shadow 0.2s;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(0, 255, 136, 0.3);
+  }
+
+  &.active {
+    border-color: var(--green);
+    background: rgba(0, 255, 136, 0.05);
+    box-shadow: 0 0 14px rgba(0, 255, 136, 0.15);
+
+    .pop-num {
+      color: var(--green);
+    }
+  }
+}
+
+.pop-num {
+  font-size: 14px;
+  color: #ffffff;
+  transition: color 0.2s;
+}
+
+.pop-tag {
+  font-size: 7px;
+  padding: 3px 6px;
+  border-radius: 2px;
+  letter-spacing: 0.05em;
+
+  &.tag-easy {
+    background: #0a2a14;
+    color: #44ff88;
+    border: 1px solid #44ff8844;
+  }
+  &.tag-medium {
+    background: #1a2a08;
+    color: #aadd00;
+    border: 1px solid #aadd0044;
+  }
+  &.tag-hard {
+    background: #2a1a00;
+    color: #ffaa00;
+    border: 1px solid #ffaa0044;
+  }
+  &.tag-vhard {
+    background: #2a0e00;
+    color: #ff6600;
+    border: 1px solid #ff660044;
+  }
+  &.tag-extreme {
+    background: #2a0000;
+    color: #ff3344;
+    border: 1px solid #ff334444;
+  }
+}
+
+.pop-desc {
+  font-size: 7px;
+  color: #6a7a9a;
+  text-align: center;
+  line-height: 1.9;
+}
+
+.modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.modal-btn-ok {
+  padding: 12px 24px;
+  background: transparent;
+  border: 1px solid var(--green);
+  color: var(--green);
+  font-family: "Press Start 2P", monospace;
+  font-size: 9px;
+  cursor: pointer;
+  letter-spacing: 0.06em;
+  transition:
+    background 0.2s,
+    box-shadow 0.2s;
+  width: auto;
+
+  &:hover {
+    background: rgba(0, 255, 136, 0.08);
+    box-shadow: 0 0 16px rgba(0, 255, 136, 0.2);
+  }
+}
+
+.modal-btn-cancel {
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  font-family: "Press Start 2P", monospace;
+  font-size: 7px;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 1;
+  }
+}
