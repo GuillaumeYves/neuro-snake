@@ -29,9 +29,17 @@ _Forké depuis [Snake-IT-DFS34A](https://github.com/tomDeprez/Snake-IT-DFS34A) d
 
 ## Lancer le projet
 
+### Via github pages
+
+```bash
+[https://guillaumeyves.github.io/neuro-snake/game.html]
+```
+
+### En local (après git clone)
+
 ```bash
 npm install
-# Ouvrir game.html dans un navigateur
+# Ouvrir game.html dans un navigateur via un serveur local
 ```
 
 > `npm run build:css` uniquement si vous modifiez le SCSS.
