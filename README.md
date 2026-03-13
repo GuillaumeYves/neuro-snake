@@ -32,7 +32,7 @@ _Forké depuis [Snake-IT-DFS34A](https://github.com/tomDeprez/Snake-IT-DFS34A) d
 ### Via github pages
 
 ```bash
-[https://guillaumeyves.github.io/neuro-snake/game.html]
+[Ouvrir game.html sur GitHub Pages](https://guillaumeyves.github.io/neuro-snake/game.html)
 ```
 
 ### En local (après git clone)
