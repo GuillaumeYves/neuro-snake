@@ -1,10 +1,12 @@
 <div align="center">
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/GuillaumeYves/neuro-snake/main/.github/preview.png" alt="preview neuro snake" width="70%"/>
+</p>
+
 # 🐍 NeuroSnake
 
 **Snake classique + mode Auto IA par algorithme génétique**
-
-![preview](.github/preview.png)
 
 [![JavaScript](https://img.shields.io/badge/JavaScript-ES2022-f7df1e?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/fr/docs/Web/JavaScript)
 [![SCSS](https://img.shields.io/badge/SCSS-modules-cc6699?style=flat-square&logo=sass&logoColor=white)](https://sass-lang.com/)
